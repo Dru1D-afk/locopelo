@@ -1,2 +1,2 @@
 # locopelo
-onetry
+файлы сайта без node_modules
