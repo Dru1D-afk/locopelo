@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Студия наращивания волос</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/"><img src="/images/logot.png" alt="LocoPeco" class="logo-text"></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Главная</a>
+                </li><li class="nav-item">
+                    <a href="/extensions" class="nav-link">Наращивание</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/education" class="nav-link">Обучение</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/products" class="nav-link">Товары</a>
+                </li>
+            </ul>
+            <ul class="nav-menu">
+                <% if (locals.user) { %>
+                    <a href="/profile" class="nav-link active">Профиль</a>
+                    <% if (user && user.role === "admin") { %> 
+                    <a href="/admin" class="nav-link">Админка</a> 
+                    <% } %>
+                    <a href="/auth/logout" class="nav-link">Выйти</a>
+                    <% } else { %>
+                        <a href="/auth/login" class="nav-link">Войти</a>
+                <% } %>
+                <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div></div>
+        </div></nav>
+
+        <section class="section prof">
+            <div class="container">
+<div class="story-content b7">
+<div class="profinf">
+<p class="section-title"> <%= user.name %></p>
+<p class="section-title"> <%= user.phone %></p>
+<p class="section-title"> <%= user.email %></p>
+</div>
+
+<div class="profinf">
+  <p class="section-title">Мои записи:</p>
+  <div class="" style="width: 100%;">
+ <% if (bookings && bookings.length) { %>
+  <% bookings.forEach(booking => { %>
+    <div class="booking-card" style="
+          background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+          border-left: 5px solid #A6BEB1;
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          min-width: 100%;
+        ">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+      <p><strong>Запись №<%= booking.id %></p></strong>
+      <span style="background: #A6BEB1; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em;">
+              <%= new Date(booking.updatedAt).toLocaleDateString('ru-RU') %>
+            </span>
+    </div>
+      <% if (booking.status === 'new') { %>
+        <p>Ожидайте подтверждения от администратора</p>
+        <form action="/booking/cancellation" method="POST">
+    <input type="hidden" name="bookingid" value="<%= booking.id %>">
+    <button class="btn-otmena" onclick="return confirm('Ждите подтверждения от администратора')" type="submit">Отменить запись</button>
+  </form>
+      <% } else if (booking.status === 'confirmed') { %>
+        <p>Ждем вас на 
+         <% if (booking.procedure === 'konsult') { %> консультацию <% } else if (booking.procedure === 'narash') { %> наращивание <% } else if (booking.procedure === 'korek') { %> коррекцию <% } else if (booking.procedure === 'snyatie') { %> снятие <% } %>
+         <%= (booking.meetingDate) %></p>
+        <form action="/booking/cancellation" method="POST">
+    <input type="hidden" name="bookingid" value="<%= booking.id %>">
+    <button class="btn-otmena" onclick="return confirm('Ждите подтверждения от администратора')" type="submit">Отменить запись</button>
+  </form>
+      <% } else if (booking.status === 'completed') { %>
+        <p>Запись завершена</p>
+      <% } else if (booking.status === 'cancelled') { %>
+        <p>Запись отменена</p>
+      <% } %>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>У вас пока нет записей.</p>
+<% } %>
+  </div>
+</div></div></div></section>
+
+<section class="section bg-white">
+  <div class="container">
+    <p class="section-title">История посещений:</p>
+    <div class="istori">
+<% if (appointments && appointments.length > 0) { %>
+    <div class="appointments-list" style="width: 100%;">
+      <% appointments.forEach(appointment => { %>
+        <div class="appointment-item" style="
+          background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+          border-left: 5px solid #A6BEB1;
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        ">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <strong style="font-size: 1.2em;">
+              Мастер: <%= appointment.master %>
+            </strong>
+            <span style="background: #A6BEB1; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em;">
+              <%= new Date(appointment.date).toLocaleDateString('ru-RU') %>
+            </span>
+          </div>
+          <h4 style="color: #495057; margin: 10px 0;">
+            <%= appointment.procedure %>
+          </h4>
+          <% if (appointment.notes) { %>
+            <p style="color: #6c757d; font-style: italic; margin: 8px 0;">
+              <%= appointment.notes %>
+            </p>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div style="text-align: center; padding: 40px 0; color: #6c757d;">
+      <p>Записей пока нет</p>
+      <p>Администратор добавит ваш первый визит</p>
+    </div>
+  <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+<h3 class="section-title">Избранные товары:</h3>
+<div class="product-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+  <% user.favorites.forEach(product => { %>
+    <div class="card" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow);">
+      <img src="<%= product.imageUrl %>" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;">
+      <div class="cardtxt" style="display: flex; flex-direction: column; gap: 3px; padding: 15px; ">
+      <h3><%= product.title %></h3>
+      <p><%= product.description %></p>
+      <p><b><%= product.price %> руб.</b></p>
+      </div>
+  <form action="/favorites/toggle" method="POST">
+    <input type="hidden" name="productId" value="<%= product.id %>">
+    <button class="izb" onclick="return confirm('💔 Убрать <%= product.title %>?')" type="submit">Убрать из избранного</button>
+  </form>
+    </div>
+  <% }) %>
+</div></div>
+</section>
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <a href="/"><img src="images/logot.png" alt="LocoPeco" class="logo-text"></a>
+                    </div>
+                    
+                </div><div class="soc">
+                    <a class="ss svk" href="https://vk.com/locopelo_orenburg"><i class="fa-brands fa-vk"></i></a>
+                    <a class="ss ws" href="https://wa.me/79033664261"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a class="ss stg" href="https://t.me/breigbali"><i class="fa-brands fa-telegram"></i></a>
+                 </div>
+                <a href="tel:+79033664261" class="footer-description">+7 (903) 366-42-61<br>
+                        Консультация</a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="fb-grid">
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/personal-data-processing-policy-2025.pdf">Политика конфиденциальности</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/consent-to-processing-of-personal-data-2025.pdf">Согласие на обработку перс. данных</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/contract-offer_training-for-building-up-2025.pdf">Договор-оферта</a>
+                </div>
+            </div>
+                <p>© 2025. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Админ-панель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Montserrat"; padding: 40px; background: linear-gradient(135deg, #A6BEB1, #627A6D); color: white; min-height: 100vh; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 50px; }
+    .header h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px;}
+    .card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; text-align: center; text-decoration: none; color: white; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.2); }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .card h3 { font-size: 1.4em; margin-bottom: 15px; }
+    .card p { opacity: 0.9; margin-bottom: 25px; }
+    .back { display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s; }
+    .back:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Админ-панель Locopelo</h1>
+      <p>Управление студией наращивания волос</p>
+    </div>
+    
+    <div class="grid">
+      <!--  Пользователи -->
+      <a href="/admin/users" class="card">
+        <div style="font-size: 3em; margin-bottom: 20px;">👥</div>
+        <h3>Управление пользователями</h3>
+        <p>Поиск, редактирование, удаление, роли</p>
+      </a>
+      
+      <!--  bcnjhbz аписиq  -->
+      <a href="/admin/appointment-add" class="card">
+        <div style="font-size: 3em; margin-bottom: 20px;">📅</div>
+        <h3>Управление записями</h3>
+        <p>Добавление истории посещений клиентов</p>
+      </a>
+
+      <!--  прием записей  -->
+      <a href="/admin/bookings" class="card">
+        <div style="font-size: 3em; margin-bottom: 20px;">📅</div>
+        <h3>Обработка записей</h3>
+        <p>Подтверждение, отмена, удаление</p>
+      </a>
+      
+      <!--  Товары -->
+      <a href="/admin/products" class="card">
+        <div style="font-size: 3em; margin-bottom: 20px;">📦</div>
+        <h3>Товары</h3>
+        <p>Добавление, редактирование</p>
+      </a>
+      
+      <!--  Статистика -->
+      <a href="#" class="card" style="opacity: 0.6;">
+        <div style="font-size: 3em; margin-bottom: 20px;">📊</div>
+        <h3>Статистика</h3>
+        <p>Пользователей: </p>
+      </a>
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="/" class="back">На главную страницу</a>
+    </div>
+  </div>
+</body>
+</html>
