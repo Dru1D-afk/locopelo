@@ -24,8 +24,8 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --zeleni: #A6BEB1;
-    --logo: visible;
-    --logo2: hidden;
+    --logo: block;
+    --logo2: none;
 }
 .darkstyle {
     --white: black;
@@ -35,8 +35,8 @@
    --overlay: rgba(0, 0, 0, 0.7);
    --prozrach: rgba(255, 255, 255, 0.4);
    --zeleni: #627A6D;
-   --logo: hidden;
-   --logo2: visible;
+   --logo: none;
+   --logo2: block;
 }
 body {
     line-height: 1.6;
@@ -67,6 +67,8 @@ span i:hover{
     width: 100%;
     z-index: 1000;
     transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
 }
 
 .nav-container {
@@ -76,22 +78,23 @@ span i:hover{
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    
     text-decoration: none;
     cursor: pointer;
 }
 
 .logo-text{
     max-width: 120px;
-   visibility: var(--logo);
+   display: var(--logo);
 }
 .lv2{
-visibility: var(--logo2);
+display: var(--logo2);
 }
 .logo{
     display: flex;
