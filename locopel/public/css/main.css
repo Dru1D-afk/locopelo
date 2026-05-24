@@ -145,7 +145,7 @@ display: var(--logo2);
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 97px;
+        top: 88px;
         flex-direction: column;
         background-color: var(--white);
         width: 100%;
@@ -950,7 +950,11 @@ display: var(--logo2);
     overflow-x: hidden;
     scrollbar-color: var(--zeleni) var(--white);
 }
-
+.prof-product{
+    display: flex;
+    gap: 20px;
+    overflow: scroll;
+}
 /* фучор */
 .footer {
     background: var(--white2);

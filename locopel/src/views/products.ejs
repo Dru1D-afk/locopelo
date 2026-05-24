@@ -30,15 +30,15 @@
                 <li class="nav-item">
                     <a href="/products" class="nav-link active">Товары</a>
                 </li>
-            </ul>
-            <ul class="nav-menu">
+            
+            <ul class="nav-item">
                 <% if (locals.user) { %>
                     <a href="/profile" class="nav-link"> <%= user.name %></a>
                     <% } else { %>
                         <a href="/auth/login" class="nav-link">Войти</a>
                 <% } %>
                 <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
-            </ul>
+            </ul></ul>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>

@@ -30,8 +30,7 @@
                 <li class="nav-item">
                     <a href="/products" class="nav-link">Товары</a>
                 </li>
-            </ul>
-            <ul class="nav-menu">
+            <ul class="nav-item">
                 <% if (locals.user) { %>
                     <a href="/profile" class="nav-link active">Профиль</a>
                     <% if (user && user.role === "admin") { %> 
@@ -42,7 +41,7 @@
                         <a href="/auth/login" class="nav-link">Войти</a>
                 <% } %>
                 <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
-            </ul>
+            </ul></ul>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -153,7 +152,7 @@
 <section class="section bg-white">
   <div class="container">
 <h3 class="section-title">Избранные товары:</h3>
-<div class="product-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+<div class="prof-product">
   <% user.favorites.forEach(product => { %>
     <div class="card" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow);">
       <img src="<%= product.imageUrl %>" style="width: 100%; height: 300px; object-fit: cover; border-radius: 5px;">
