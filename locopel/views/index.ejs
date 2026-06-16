@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Студия наращивания волос</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/"><img src="/images/logot.png" alt="LocoPeco" class="logo-text"></a>
+                <a href="/"><img src="/images/logo_pelo.png" alt="LocoPeco" class="logo-text lv2"></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">Главная</a>
+                </li><li class="nav-item">
+                    <a href="/extensions" class="nav-link">Наращивание</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/education" class="nav-link">Обучение</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/products" class="nav-link">Товары</a>
+                </li>
+
+                <ul class="nav-item">
+                <% if (locals.user) { %>
+                    <a href="/profile" class="nav-link"> <%= user.name %></a>
+                    <% } else { %>
+                        <a href="/auth/login" class="nav-link">Войти</a>
+                <% } %>
+                <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            </ul>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div></div>
+        </div></nav>
+
+<section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Бережное наращивание</h1>
+            <p class="hero-subtitle">Волосы нужной вам длины за один день!</p>
+            <p class="hero-subtitle">С незаметным переходом <br>между родными и наращенными прядями.</p>
+            <div class="hero-buttons">
+                <button id="otpr" class="btn btn-primary">Записаться</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        
+    
+    <div class="modal" id="model1">
+        <div class="okno">
+            <div class="zo">
+            <h1>ЗАПИСАТЬСЯ</h1>
+            <p>Перезвоним, уточним ваши пожелания, сообщим стоимость услуги и подберём удобное для записи время.</p>
+        </div>
+        <form action="/bookings" method="POST" class="f">
+            <select name="city" id="" size="1" class="gorod" required>
+                <option value="" selected>Ваш город</option>
+                <option value="Оренбург">Оренбург</option>
+                <option value="Сочи">Сочи</option>
+                <option value="Самара">Самара</option>
+            </select>
+                <div class="obrash2">
+                    <input name="name" class="obrash" type="text" required value="<%= user?.name %>">
+                    <label class="obrasht">Имя</label>
+                </div>
+                <div class="obrash2">
+                    <input name="phone" class="obrash" type="text" required value="<%= user?.phone %>">
+                    <label class="obrasht">Номер телефона</label>
+                </div>
+            
+                <button type="submit" class="zakr">Отправить</button>
+        </form>
+            <button class="batn" id="zakrit">Назад</button>
+        </div>
+    </div>
+    </section>
+
+
+
+    <section class="section features">
+        <div class="container">
+            <div class="section-header">
+                <div class="logo"><h2 class="section-title">ГРУППА КОМПАНИЙ - </h2><img src="/images/logot.png" alt="LocoPeco" class="logo-text ll"></div>
+                <p class="section-subtitle">Loco Pelo – сеть салонов в 4 городах России (Оренбург, Самара, Сочи, Санкт-Петербург).
+                    <br>
+                    Наращиваем волосы с 2005 года. В нашей команде 35 человек.
+                    <br>
+                    Специализируемся на микрокапсульной технологии. С её помощью помогаем клиентам удлинить волосы, увеличить их объём, уплотнить кончики, нарастить височную зону и чёлку без вреда для родных локонов.
+                    <br>
+                    Выполнили более 55 тысяч наращиваний с разным эффектом (длина, объём, точечное).</p>
+                    
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">ГОД LocoPelo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">55000+</div>
+                    <div class="stat-label">НАРАЩИВАНИЙ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">САЛОНА</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">SWAG</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section slider-section">
+        <div class="container">
+            <h2 class="section-title">Наши работы:</h2>
+            <div class="slider">
+                <img src="/images/photo_s1.jpg" alt="">
+                <img src="/images/photo_s2.jpg" alt="">
+                <img src="/images/photo_s3.jpg" alt="">
+                <img src="/images/photo_s4.jpg" alt="">
+                <img src="/images/photo_s5.jpg" alt="">
+            </div>
+        </div>  
+    </section>
+
+
+    <section class="section bg-white2">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">В LocoPelo:</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3 class="feature-title">Фиксированные цены</h3>
+                    <span class="service-text">Никаких доплат к установленному прайсу. Постоянным клиентам - бонусы и скидки.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Ответственность</h3>
+                    <span class="service-text">Предоставляем гарантию на свои капсулы и работу мастера (две недели).</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Специальные условия</h3>
+                    <span class="service-text">Скидка 20% на наращивание у дежурного мастера.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Опытные мастера</h3>
+                    <span class="service-text">Следим за тенденциями в наращивании, проходим обучение и повышаем свой профессиональный
+                    уровень.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Обновляемый ассортимент</h3>
+                    <span class="service-text">В наличии и под заказ более 30 оттенков прядей, разной структуры и длины, отборные
+                    детские волосы с фотоотчётом донора.</span>
+                </div>
+            </div>
+            <div class="services-cta">
+                <button id="otpr2" class="btn btn-secondary">Записаться на наращивание</button>
+            </div>
+        </div>
+    </section>
+
+     <section class="section tseni">
+        <div class="container">
+        <div class="section-header">
+            <h4 class="section-title">ЦЕНЫ НА НАРАЩИВАНИЕ ВОЛОС:</h4>
+            <p class="section-subtitle">*актуальны на момент размещения информации: 30.03.2026*</p>
+        </div>
+        <div class="tsenisuka">
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ОБЪЁМ/ЗАГУЩЕНИЕ</h5>
+                    <h5 class="section-subtitle">15 550 - 24 500 ₽</h5>
+                </div>
+                <p>по длине своих, 180-200 прядей (40 гр)</p>
+            </div>
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ДЛИНА +15/20 СМ</h5>
+                    <h5 class="section-subtitle">33 000 - 36 000 ₽</h5>
+                </div>
+                <p>280 - 300 прядей (80/85 гр)</p>
+            </div>
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ЗАГУЩЕНИЕ ВИСКОВ</h5>
+                    <h5 class="section-subtitle">15 550 - 20 000 ₽</h5>
+                </div>
+                <p>120 - 130 прядей (25/35гр)</p>
+            </div>
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ДЛИНА +25/30 СМ</h5>
+                    <h5 class="section-subtitle">45 000 - 55 000 ₽</h5>
+                </div>
+                <p>320 - 350 прядей (100 гр)</p>
+            </div>
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ДЛИНА +10 СМ</h5>
+                    <h5 class="section-subtitle">28 000 - 33 000 ₽</h5>
+                </div>
+                <p>220 - 250 прядей (60/65 гр)</p>
+            </div>
+            <div class="bb8">
+                <div class="bb8v">
+                    <h5 class="section-subtitle">ДЛИНА +30/40 СМ</h5>
+                    <h5 class="section-subtitle">55 000 - 75 000 ₽</h5>
+                </div>
+                <p>400 - 420 прядей (120/140 гр)</p>
+            </div>
+        </div>
+        <div class="bb8 m">
+            <div class="bb8v">
+                <h5 class="section-subtitle">ДЕТСКИЕ ВОЛОСЫ</h5>
+                <h5 class="section-subtitle">+40% К ОБЩЕМУ ПРАЙСУ</h5>
+            </div>
+            <p>стоимость микро считается отдельно.</p>
+        </div>
+        <p class="infb8">Важно! Граммовка и кол-во прядей зависят от густоты родных волос. В прайсе указаны цены для тонкой и средней густоты. Точную стоимость наращивания можно узнать на консультации в салоне.</p>
+        </div>
+    </section>
+
+    <section class="section tseni t2">
+        <div class="container">
+        <h4 class="section-title"><span class="zelen">Количество прядей зависит от результата,<br>который вы хотите получить.</span></h4>
+        <p class="infb8">Например, для микрокапсульного наращивания на короткие волосы нужно больше прядок, чем для объёма или загущения.</p>
+        <div class="mb9">
+                <h5>Хотите <span class="korich">уточнить стоимость</span> вашего наращивания?</h5>
+                <h5> Оставьте заявку и получите расчёт уже сегодня.</h5>
+        </div>
+        <button class="btn btn-primary" id="otpr3">Записаться на консультацию</button>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <section class="section mission-section bg-white2">
+        <div class="container">
+            <div class="mission-content">
+                <h2 class="section-title">Вопрос - Ответ</h2>
+                <div class="cgapc">
+                    <button class="collapsible">У меня нет денег на полноценное наращивание. Что вы можете мне предложить?
+</button>
+    <div class="content">
+        <p>Вы можете выбрать один из вариантов: <br>
+            1. Обновить образ без полноценного наращивания. Мы можем просто добавить объема прическе. Эта услуга стоит от 5 до 8 тысяч рублей в зависимости от длины, количества прядей и других параметров. <br>
+            2. Записаться к дежурному мастеру со скидкой 20%. Мы следим за качеством и даем гарантию 2 недели. Но будьте готовы, что процедура займет больше времени, чем если бы волосы наращивал опытный мастер.</p>
+    </div>
+    <button class="collapsible">У меня тонкие волосы. Они не выпадут после наращивания?</button>
+    <div class="content">
+        <p>Мы всегда учитываем качество волос клиентов и при работе с тонкими волосами используем технику наращивания «точками»: она не перегружает волосы, а сами капсулы практически не чувствуются.</p>
+    </div>
+    <button class="collapsible">Можно ли делать наращивание, если свои волосы очень короткие?</button>
+    <div class="content">
+        <p>Да, мы работаем даже с короткими волосами. При этом цены на услуги у нас ниже, чем у ряда конкурентов.</p>
+    </div>
+    <button class="collapsible">Можно ли скорректировать цвет волос при наращивании? Хочу попробовать более светлый тон, но боюсь осветляться.</button>
+    <div class="content">
+        <p>Мы можем нарастить пряди так, чтобы создавался плавный переход от вашего темного цвета к светлому цвету искусственных волос. Если вам не понравится или надоест цвет, вы сможете вернуться к привычному образу, просто сняв наращенные пряди.</p>
+     </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-section w bg-white">
+        <div class="container">
+            <h2 class="section-title en">Наши соцсети</h2>
+            <div class="stats-grid">
+                <div class="stat-item eo">
+                    <h3 class="feature-titlen">Оренбург<br>
+пр-д Северный, 16/2</h3>
+                    <div class="iv"><a class="ss ins" href="https://www.instagram.com/locopelo.ru?igsh=NGNzaXk0bGVqbjdo"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="ss svk" href="https://vk.com/locopelo_orenburg"><i class="fa-brands fa-vk"></i></a></div>
+                </div>
+                <div class="stat-item eo">
+                    
+                    <h3 class="feature-titlen">Сочи<br>
+ул. Широкое поле, д. 594</h3>
+                    <div class="iv"><a class="ss ins" href="https://www.instagram.com/locopelo.sochi?igsh=emt5dzc5NHpwZXo5"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="ss svk" href="https://vk.com/locopelosochi"><i class="fa-brands fa-vk"></i></a></div>
+                </div>
+                <div class="stat-item eo">
+                    
+                    <h3 class="feature-titlen">Самара<br>
+ул. А. Толстого, 75</h3>
+                    <div class="iv"><a class="ss ins" href="https://www.instagram.com/locopelo.samara?igsh=MXVyb2JjcWNra3pueA=="><i class="fa-brands fa-instagram"></i></a>
+                    <a class="ss svk" href="https://vk.com/locopelo_samara"><i class="fa-brands fa-vk"></i></a></div>
+                </div>
+                <div class="stat-item eo">
+                    
+                    <h3 class="feature-titlen">Санкт-Петербург,
+Б. Сампсониевский пр-т 29Б</h3>
+                    <div class="iv"><a class="ss ins" href="https://www.instagram.com/locopelo_spb?igsh=ZHQ4dHYyMDl1cXI5"><i class="fa-brands fa-instagram"></i></a>
+                    <a class="ss svk" href="https://vk.com/locopelo_spb"><i class="fa-brands fa-vk"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section yndx-section bg-white">
+        <div class="container">
+            <div class="yndx-content">
+                <div class="yndx-text">
+                    <div class="stb">
+                        <h3 class="section-title">Хорошее место 2026</h3>
+                    <div class="infb8">
+                    <p>Благодарим посетительниц салона, оставляющих отзывы. Спасибо вам за каждое тёплое слово в адрес наших мастеров, за доверие, за то, что делитесь своими впечатлениями 💜 <br><br>Обратная связь от вас — это не просто приятные строки, а огромная поддержка и вдохновение для команды Loco Pelo 💜</p>
+                   </div>
+                </div>
+                </div>
+
+                    <img class="xz" src="images/yndx.jpg" alt="#">
+            </div>
+        </div>
+    </section>
+
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <a href="/"><img src="images/logot.png" alt="LocoPeco" class="logo-text"></a>
+                    </div>
+                    
+                </div><div class="soc">
+                    <a class="ss svk" href="https://vk.com/locopelo_orenburg"><i class="fa-brands fa-vk"></i></a>
+                    <a class="ss ws" href="https://wa.me/79033664261"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a class="ss stg" href="https://t.me/breigbali"><i class="fa-brands fa-telegram"></i></a>
+                 </div>
+                <a href="tel:+79033664261" class="footer-description">+7 (903) 366-42-61<br>
+                        Консультация</a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="fb-grid">
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/personal-data-processing-policy-2025.pdf">Политика конфиденциальности</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/consent-to-processing-of-personal-data-2025.pdf">Согласие на обработку перс. данных</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/contract-offer_training-for-building-up-2025.pdf">Договор-оферта</a>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+    </footer>
+    <script>
+            document.getElementById("otpr").addEventListener("click", function(){
+        document.getElementById("model1").classList.add("open")
+         })
+         document.getElementById("otpr2").addEventListener("click", function(){
+        document.getElementById("model1").classList.add("open")
+         })
+          document.getElementById("otpr3").addEventListener("click", function(){
+        document.getElementById("model1").classList.add("open")
+         })
+        
+         document.getElementById("zakrit").addEventListener("click", function(){
+            document.getElementById("model1").classList.remove("open")
+            document.getElementById("inptxt").value = null
+         })
+    </script>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
+
+

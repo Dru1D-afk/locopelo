@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Студия наращивания волос</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/"><img src="/images/logot.png" alt="LocoPeco" class="logo-text"></a>
+                <a href="/"><img src="/images/logo_pelo.png" alt="LocoPeco" class="logo-text lv2"></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Главная</a>
+                </li><li class="nav-item">
+                    <a href="/extensions" class="nav-link active">Наращивание</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/education" class="nav-link">Обучение</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/products" class="nav-link">Товары</a>
+                </li>
+            
+            <ul class="nav-item">
+                <% if (locals.user) { %>
+                    <a href="/profile" class="nav-link"> <%= user.name %></a>
+                    <% } else { %>
+                        <a href="/auth/login" class="nav-link">Войти</a>
+                <% } %>
+                <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            </ul></ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div></div>
+        </div></nav>
+
+    <section class="hero her2">
+        <div class="hero-content">
+            <h1 class="hero-title">Бережное наращивание</h1>
+            <p class="hero-subtitle">Волосы нужной вам длины за один день!</p>
+            <p class="hero-subtitle">С незаметным переходом <br>между родными и наращенными прядями.</p>
+            <div class="hero-buttons">
+                <button id="otpr" class="btn btn-primary">Записаться</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <div class="modal" id="model1">
+        <div class="okno">
+            <div class="zo">
+            <h1>ЗАПИСАТЬСЯ</h1>
+            <p>Перезвоним, уточним ваши пожелания, сообщим стоимость услуги и подберём удобное для записи время.</p>
+        </div>
+        <form action="/bookings" method="POST" class="f">
+            <select name="city" id="" size="1" class="gorod" required>
+                <option value="" selected>Ваш город</option>
+                <option value="Оренбург">Оренбург</option>
+                <option value="Сочи">Сочи</option>
+                <option value="Самара">Самара</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+            </select>
+                <div class="obrash2">
+                    <input name="name" class="obrash" type="text" required>
+                    <label class="obrasht">Имя</label>
+                </div>
+                <div class="obrash2">
+                    <input name="phone" class="obrash" type="text" required>
+                    <label class="obrasht">Номер телефона</label>
+                </div>
+            
+                <button type="submit" class="zakr">Отправить</button>
+        </form>
+            <button class="batn" id="zakrit">Назад</button>
+        </div>
+    </div>
+
+    <section class="section bg-white2">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Выбрайте свой вариант наращивания волос:</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3 class="feature-title">Удлинение</h3>
+                    <span class="service-text">«Отрастим» с помощью дополнительных прядей нужную вам длину волос: до плеч, лопаток, талии и ниже (до 80 см).</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Загущение</h3>
+                    <span class="service-text">Сделаем густыми волосы, лишённые объёма, чтобы причёска была пышнее и держала форму.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Длина и объём</h3>
+                    <span class="service-text">Поможем тем, кого не устраивает ни длина, ни объём своих волос. Добавим пряди для необходимого эффекта.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Цветной микс</h3>
+                    <span class="service-text">Изменим цвет ваших волос без использования краски, нарастив пряди других оттенков (эффект омбрэ, мелирования, шатуш).</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Интеграция</h3>
+                    <span class="service-text">Скроем частичное выпадение волос с помощью системы их замещения.</span>
+                </div>
+                <div class="service-item">
+                    <h3 class="feature-title">Отдельные зоны</h3>
+                    <span class="service-text">Уплотним кончики, нарастим чёлку или загустим виски. Можно спрятать непонравившуюся стрижку, «отрастив» волосы за 1-2 часа.</span>
+                </div>
+            </div>
+            <div class="services-cta">
+                <button id="otpr2" class="btn btn-secondary">Записаться</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section yndx-section bg-white">
+        <div class="container">
+            <div class="yndx-content">
+                    <div class="stb">
+                        <img class="xz v2" src="images/photo_extens.jpg" alt="#">
+                </div>
+
+                <div class="yndx-text">
+                    <div class="stb">
+                    <h3 class="section-title">Как наращиваем:</h3>
+                    <div class="infb8 l"><p>С помощью маленьких прочных капсул дополнительные пряди прикрепляются к родным волосам. <br><br>Размер капсул от 2 до 3 мм, вес - 0,2 гр. Поэтому они комфортны в носке и незаметны окружающим.
+<br><br>Наращивание совмещается с окрашиванием, выпрямлением, завивкой. Без ограничений в занятиях спортом и плаванием. Феном пользоваться можно.
+<br><br>Срок носки наращенных волос: от 2 до 4 месяцев (влияет скорость роста собственных волос). Затем - коррекция или снятие прядей.
+<br><br>Важно! Пряди можно использовать повторно.</p></div>
+                   </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="yndx-section bg-white2">
+        <div class="container">        
+        <div class="block4">
+            <h2 class="section-title">Этапы работы <br>
+                <span class="zelen">для вашего преображения</span>:</h2>
+            <div class="bb">
+                <p class="cifra">1</p>
+                <div class="bt">
+                    <h3 class="feature-title">Консультация</h3>
+                    <p class="infb8 l">С учётом особенностей родных волос и цели наращивания (удлинение, объём, уплотнение
+                        висков и др.)
+                        мастер подбирает пряди нужного оттенка, структуры, длины и предлагает несколько вариантов,
+                        различных по цене.</p>
+                </div>
+            </div>
+
+            <div class="bb">
+                <p class="cifra">2</p>
+                <div class="bt">
+                    <h3 class="feature-title">Подготовка к процедуре</h3>
+                    <p class="infb8 l">Перед наращиванием свои волосы должны быть чистыми. Вымыть голову можно в салоне или
+                        в домашних условиях. Важно! Используем только шампунь, без последующего нанесения бальзама и пр.
+                        средств.</p>
+                </div>
+            </div>
+
+            <div class="bb">
+                <p class="cifra">3</p>
+                <div class="bt">
+                    <h3 class="feature-title">Наращивание</h3>
+                    <p class="infb8 l">Капсулируем дополнительные пряди и закрепляем их на ваших волосах. Процесс занимает
+                        от 1 до 5,5 часов. На время влияет цель наращивания и количество капсул.</p>
+                </div>
+            </div>
+
+            <div class="bb">
+                <p class="cifra">4</p>
+                <div class="bt">
+                    <h3 class="feature-title">Стрижка, укладка</h3>
+                    <p class="infb8 l">После процедуры вас ждёт бесплатная адаптационная стрижка, локоны в подарок и памятка
+                        по уходу за наращенными волосами.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section features3 bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наращиваем:</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="feature-card3">
+                    <i class="fa-solid fa-crown"></i>
+                    <h3 class="feature-title">Качественно</h3>
+                    <p class="feature-description">Наращенные волосы выглядят, как родные. Без переходов, видимых линий и заломов. Капсулы незаметны окружающим.</p>
+                </div>
+                <div class="feature-card3">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <h3 class="feature-title">Комфортно</h3>
+                    <p class="feature-description">Нагрузка на свои волосы минимальна, неудобства во время сна отсутствуют. За наращенными прядями легко ухаживать.</p>
+                </div>
+                <div class="feature-card3">
+                    <i class="fa-solid fa-face-smile"></i>
+                    <h3 class="feature-title">Бережно</h3>
+                    <p class="feature-description">Наращивание без боли. Капсулы не повреждают волосяную луковицу и не портят ваши волосы.</p>
+                </div>
+                 <div class="feature-card3">
+                    <i class="fa-solid fa-shield"></i>
+                    <h3 class="feature-title">Безопасно</h3>
+                    <p class="feature-description">Процедура подходит тонким, редким, коротким, светлым и тёмным, прямым и волнистым волосам.</p>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <a href="/"><img src="images/logot.png" alt="LocoPeco" class="logo-text"></a>
+                    </div>
+                    
+                </div><div class="soc">
+                    <a class="ss svk" href="https://vk.com/locopelo_orenburg"><i class="fa-brands fa-vk"></i></a>
+                    <a class="ss ws" href="https://wa.me/79033664261"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a class="ss stg" href="https://t.me/breigbali"><i class="fa-brands fa-telegram"></i></a>
+                 </div>
+                <a href="tel:+79033664261" class="footer-description">+7 (903) 366-42-61<br>
+                        Консультация</a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="fb-grid">
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/personal-data-processing-policy-2025.pdf">Политика конфиденциальности</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/consent-to-processing-of-personal-data-2025.pdf">Согласие на обработку перс. данных</a>
+                </div>
+                <div class="fu">
+                    <a href="https://locopelo.ru/assets/landing/files/contract-offer_training-for-building-up-2025.pdf">Договор-оферта</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            document.getElementById("otpr").addEventListener("click", function(){
+        document.getElementById("model1").classList.add("open")
+         })
+         document.getElementById("otpr2").addEventListener("click", function(){
+        document.getElementById("model1").classList.add("open")
+         })
+        
+        
+         document.getElementById("zakrit").addEventListener("click", function(){
+            document.getElementById("model1").classList.remove("open")
+            document.getElementById("inptxt").value = null
+         })
+    </script>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

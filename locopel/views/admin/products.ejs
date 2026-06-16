@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Товарчики | Админ-панель</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1>Управление товарами (<%= products.length %>)</h1>
+
+<!-- добавление -->
+<form enctype="multipart/form-data" action="/admin/products/add" method="POST">
+    <table><tr>
+<th>ID</th>
+  <th><input type="text" name="title" placeholder="Название" required></th>
+  <th><input type="number" name="price" placeholder="Цена" step="0.01" required></th>
+  <th><input name="description" placeholder="Описание"></th>
+  <th class="knopki"><input type="file" name="image">
+  <button class="btn" type="submit">Добавить товар</button></th>
+  </tr></table>
+</form>
+<br>
+<!-- список товаров -->
+<table>
+    <tr>
+      <th>ID</th><th>Название</th><th>Цена</th><th>Описание</th><th>Действия</th>
+    </tr>
+  <% products.forEach(product => { %>
+  <tr>
+    <td><strong><%= product.id %></strong></td>
+    <td><%= product.title %></td>
+    <td><%= product.price %></td>
+    <td><%= product.description %></td>
+    <td class="knopki">
+        <form action="/admin/products/edit/<%= product.id %>">
+            <button class="btn" type="submit">Редактировать</button>
+        </form>
+      <form action="/admin/products/delete/<%= product.id %>" method="POST">
+        <button onclick="return confirm('Удалить <%= product.title %>?')" class="btn-delete" type="submit">Удалить</button>
+      </form>
+    </td>
+  </tr>
+  <% }) %>
+</table>
+
+   <br><a href="/admin" class="back">← Назад в админку</a>
+
+  <style>
+    body { font-family: "Montserrat"; padding: 20px; background: #f5f5f5; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    th { background: #A6BEB1; color: white; padding: 15px; text-align: left; }
+    td { padding: 15px; border-bottom: 1px solid #eee;}
+    tr:hover { background: #f8f9fa; }
+    button { border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; margin-right: 5px; }
+    .btn { border: 1px solid black; padding: 3px 6px; border-radius: 5px; cursor: pointer; font-weight: 500; }
+    .btn-delete { font-weight: 600; background: red; color: white; }
+    .back { background: #747d8c; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block; }
+    .knopki{ gap: 1rem;}
+  </style>
+</body>
+</html>
