@@ -945,6 +945,7 @@ display: var(--logo2);
 }
 .istori{
     display: flex;
+    justify-content: center;
     overflow: scroll;
     max-height: 50vh;
     overflow-x: hidden;
