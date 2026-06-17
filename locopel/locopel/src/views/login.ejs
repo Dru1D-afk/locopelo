@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Студия наращивания волос</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sen:wght@400..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/"><img src="/images/logot.png" alt="LocoPeco" class="logo-text"></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/extensions" class="nav-link">Наращивание</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/education" class="nav-link">Обучение</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/products" class="nav-link">Товары</a>
+                </li>
+            </ul>
+            <ul class="nav-menu">
+                <% if (locals.user) { %>
+                    <a href="/profile" class="nav-link">
+                        <%= user.name %>
+                    </a>
+                    <a href="/auth/logout" class="nav-link">Выйти</a>
+                    <% } else { %>
+                        <a href="/auth/login" class="nav-link active">Войти</a>
+                        <% } %>
+                            <span id="styl"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+
+    <div class="bodywrap">
+        <form method="POST" action="/auth/login" class="wrap">
+            <h1>Вход</h1>
+
+            <div class="inpb">
+                <input class="inp" type="tel" name="phone" placeholder="Телефон" required/>
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="inpb">
+                <input class="inp" type="password" name="password" placeholder="Пароль" required />
+                <i class="fa-solid fa-key"></i>
+            </div>
+
+            <button type="submit" class="vhod">Войти</button>
+            <a href="/auth/register" class="footer-description">Я не зарегистрирован</a>
+        </form>
+    </div>
+
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
